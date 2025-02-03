@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% block title %}Shop - Thryfty{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <!-- Filter Sidebar -->
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">Filters</h5>
+        </div>
+        <div class="card-body">
+          <form id="filterForm">
+            <!-- Price Range -->
+            <div class="mb-3">
+              <label for="priceRange" class="form-label">Price Range</label>
+              <input type="range" class="form-range" id="priceRange" min="0" max="100" step="10">
+              <div class="d-flex justify-content-between">
+                <span>$0</span>
+                <span>$100</span>
+              </div>
+            </div>
+            <!-- Category Filter -->
+            <div class="mb-3">
+              <label class="form-label">Category</label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Shirt" id="categoryShirt">
+                <label class="form-check-label" for="categoryShirt">Shirts</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Jeans" id="categoryJeans">
+                <label class="form-check-label" for="categoryJeans">Jeans</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Accessories" id="categoryAccessories">
+                <label class="form-check-label" for="categoryAccessories">Accessories</label>
+              </div>
+            </div>
+            <!-- Rating Filter -->
+            <div class="mb-3">
+              <label class="form-label">Rating</label>
+              <select class="form-select" id="ratingFilter">
+                <option value="">All Ratings</option>
+                <option value="4">4+ Stars</option>
+                <option value="3">3+ Stars</option>
+                <option value="2">2+ Stars</option>
+                <option value="1">1+ Star</option>
+              </select>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm w-100" onclick="applyFilters()">Apply Filters</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="col-md-9">
+      <div class="row" id="productGrid">
+        <!-- Product Cards -->
+        <div class="col-md-4 mb-4 product-card" data-category="Shirt" data-price="20" data-rating="4.5">
+          <div class="card">
+            <img src="../static/images/tshirt.jpg" alt="Product Image" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Shirt</h5>
+              <p class="card-text text-muted">$20.00</p>
+              <div>
+                <button class="btn btn-primary btn-sm">Add to Cart</button>
+                <button class="btn btn-outline-secondary btn-sm">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 product-card" data-category="Jeans" data-price="30" data-rating="4.0">
+          <div class="card">
+            <img src="../static/images/jeans.jpg" alt="Product Image" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Jeans</h5>
+              <p class="card-text text-muted">$30.00</p>
+              <div>
+                <button class="btn btn-primary btn-sm">Add to Cart</button>
+                <button class="btn btn-outline-secondary btn-sm">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 product-card" data-category="Bracelet" data-price="10" data-rating="3.5">
+          <div class="card">
+            <img src="../static/images/bracelet.jpg" alt="Product Image" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Bracelet</h5>
+              <p class="card-text text-muted">$10.00</p>
+              <div>
+                <button class="btn btn-primary btn-sm">Add to Cart</button>
+                <button class="btn btn-outline-secondary btn-sm">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 product-card" data-category="Dress" data-price="25" data-rating="5.0">
+          <div class="card">
+            <img src="../static/images/dress.jpg" alt="Product Image" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Dress</h5>
+              <p class="card-text text-muted">$25.00</p>
+              <div>
+                <button class="btn btn-primary btn-sm">Add to Cart</button>
+                <button class="btn btn-outline-secondary btn-sm">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 product-card" data-category="Dress Pants" data-price="31" data-rating="3.0">
+          <div class="card">
+            <img src="../static/images/dress pants.png" alt="Product Image" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Dress Pants</h5>
+              <p class="card-text text-muted">$31.00</p>
+              <div>
+                <button class="btn btn-primary btn-sm">Add to Cart</button>
+                <button class="btn btn-outline-secondary btn-sm">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 product-card" data-category="Necklace" data-price="15" data-rating="4.5">
+          <div class="card">
+            <img src="../static/images/necklace.jpg" alt="Product Image" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Necklace</h5>
+              <p class="card-text text-muted">$15.00</p>
+              <div>
+                <button class="btn btn-primary btn-sm">Add to Cart</button>
+                <button class="btn btn-outline-secondary btn-sm">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
